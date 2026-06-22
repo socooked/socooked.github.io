@@ -5,7 +5,102 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pāpaia Case Study | Bryant Morris</title>
   <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    /* Pāpaia page image layout fix */
+    .papaia-featured-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .papaia-gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .papaia-image-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 1.4rem;
+      overflow: hidden;
+      box-shadow: 0 20px 45px rgba(0,0,0,.22);
+    }
+
+    .papaia-image-slot {
+      position: relative;
+      width: 100%;
+      min-height: 360px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.02)),
+        repeating-linear-gradient(45deg, rgba(255,255,255,.06) 0 10px, transparent 10px 20px);
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .papaia-image-slot.tall {
+      min-height: 520px;
+    }
+
+    .papaia-image-slot img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      background: #111;
+    }
+
+    .papaia-missing-fallback {
+      position: absolute;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      color: var(--muted);
+      font-weight: 800;
+      border: 2px dashed var(--border);
+    }
+
+    .papaia-image-card figcaption {
+      padding: 1rem 1.1rem 1.2rem;
+      color: var(--muted);
+      font-size: .94rem;
+    }
+
+    .papaia-image-card figcaption strong {
+      color: var(--text);
+    }
+
+    .case-note {
+      border: 1px solid var(--accent);
+      background: rgba(141,183,255,.08);
+      color: var(--text);
+      border-radius: 1rem;
+      padding: 1rem;
+      margin-top: 1rem;
+    }
+
+    @media (max-width: 820px) {
+      .papaia-featured-grid,
+      .papaia-gallery-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .papaia-image-slot,
+      .papaia-image-slot.tall {
+        min-height: 360px;
+      }
+    }
+  </style>
 </head>
+
 <body>
 <header class="site-header">
   <nav class="nav">
@@ -14,14 +109,19 @@
       <a href="index.html#work">Work</a>
       <a href="index.html#about">About</a>
       <a href="index.html#contact">Contact</a>
+      <a class="button small" href="resume.pdf" target="_blank" rel="noreferrer">Resume</a>
     </div>
   </nav>
 </header>
+
 <main>
   <section class="case-hero">
     <p class="eyebrow">UX Research · HCI · Prototyping</p>
     <h1>Pāpaia: Designing a privacy-first cycle tracking experience.</h1>
-    <p class="hero-copy">A mobile app concept focused on privacy, inclusive tracking, flexible symptom journaling, and simple navigation for sensitive health information.</p>
+    <p class="hero-copy">
+      A mobile app concept focused on privacy, inclusive tracking, flexible symptom journaling,
+      and simple navigation for sensitive health information.
+    </p>
 
     <div class="case-meta">
       <div class="meta-card"><strong>Role</strong>UX Researcher & Designer</div>
@@ -29,11 +129,19 @@
       <div class="meta-card"><strong>Tools</strong>Figma, survey analysis, AEIOU framework</div>
       <div class="meta-card"><strong>Methods</strong>Interviews, survey, usability testing</div>
     </div>
+
+    <div class="case-note">
+      This page now includes visible image sections for research charts, wireframes, onboarding, and high-fidelity Pāpaia screens.
+      If an image path breaks, the page will still show a dashed placeholder slot.
+    </div>
   </section>
 
   <section class="case-section">
     <h2>Problem</h2>
-    <p>Many cycle-tracking apps feel overwhelming, ad-heavy, expensive, or unclear about how sensitive data is stored. This can make users hesitant to track consistently and reduce trust in the product.</p>
+    <p>
+      Many cycle-tracking apps feel overwhelming, ad-heavy, expensive, or unclear about how sensitive data is stored.
+      This can make users hesitant to track consistently and reduce trust in the product.
+    </p>
   </section>
 
   <section class="case-section case-grid">
@@ -42,14 +150,15 @@
       <ul>
         <li>Helped create all three levels of fidelity: wireframe, mid-fidelity prototype, and high-fidelity walkthrough.</li>
         <li>Interviewed 2 of the 6 research participants during the high-fidelity phase.</li>
-        <li>Created the survey scoring sheet used to translate interviews into research insights.</li>
+        <li>Created the survey scoring sheet used to translate interview responses into research insights.</li>
         <li>Helped connect findings around privacy, simplicity, and personalization to design decisions.</li>
       </ul>
     </div>
+
     <div class="case-block">
       <h2>Research</h2>
       <ul>
-        <li>6 hybrid structured interviews with participants aged 18–25.</li>
+        <li>6 hybrid structured interviews with menstruating participants aged 18–25.</li>
         <li>37-response anonymous survey across age groups using snowball sampling.</li>
         <li>AEIOU observational framework to understand behavior around tracking tools.</li>
       </ul>
@@ -57,18 +166,110 @@
   </section>
 
   <section class="case-section">
+    <p class="eyebrow">Research Artifacts</p>
+    <h2>Survey findings that shaped the product direction</h2>
+    <p>
+      Our research showed that users wanted quick logging, fewer menus, stronger privacy controls,
+      personalization, and less cognitive load. These findings helped shape the app’s privacy-first design direction.
+    </p>
+
+    <div class="papaia-featured-grid">
+      <figure class="papaia-image-card">
+        <div class="papaia-image-slot">
+          <img src="assets/papaia-research-chart-1.png" alt="Pāpaia survey chart showing existing app use" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+          <div class="papaia-missing-fallback">Image slot for papaia-research-chart-1.png</div>
+        </div>
+        <figcaption>
+          <strong>Survey chart:</strong> Helped identify what users currently track and what features matter in cycle-tracking tools.
+        </figcaption>
+      </figure>
+
+      <figure class="papaia-image-card">
+        <div class="papaia-image-slot">
+          <img src="assets/papaia-research-chart-2.png" alt="Pāpaia survey chart showing user interest in app features" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+          <div class="papaia-missing-fallback">Image slot for papaia-research-chart-2.png</div>
+        </div>
+        <figcaption>
+          <strong>Survey chart:</strong> Supported the need for privacy, personalization, and simple tracking flows.
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="case-section">
+    <p class="eyebrow">Prototype Evolution</p>
+    <h2>From wireframes to high-fidelity design</h2>
+    <p>
+      I helped create the wireframe, mid-fidelity, and high-fidelity walkthroughs for Pāpaia.
+      The design evolved around anonymous onboarding, private ID generation, quick logging, journaling,
+      calendar tracking, and clearer user control.
+    </p>
+
+    <div class="papaia-gallery-grid">
+      <figure class="papaia-image-card">
+        <div class="papaia-image-slot tall">
+          <img src="assets/papaia-wireframes.png" alt="Pāpaia wireframes and mid-fidelity prototype screens" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+          <div class="papaia-missing-fallback">Image slot for papaia-wireframes.png</div>
+        </div>
+        <figcaption>
+          <strong>Wireframe and mid-fidelity concepts:</strong> Early exploration of landing, sign-in, anonymous profile, customization, journal, track, and today screens.
+        </figcaption>
+      </figure>
+
+      <figure class="papaia-image-card">
+        <div class="papaia-image-slot tall">
+          <img src="assets/papaia-onboarding.png" alt="Pāpaia onboarding and private ID high-fidelity screens" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+          <div class="papaia-missing-fallback">Image slot for papaia-onboarding.png</div>
+        </div>
+        <figcaption>
+          <strong>Onboarding and private ID flow:</strong> High-fidelity screens emphasizing anonymous access, privacy, and user control.
+        </figcaption>
+      </figure>
+
+      <figure class="papaia-image-card">
+        <div class="papaia-image-slot tall">
+          <img src="assets/papaia-high-fidelity.png" alt="Pāpaia high-fidelity app screens" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+          <div class="papaia-missing-fallback">Image slot for papaia-high-fidelity.png</div>
+        </div>
+        <figcaption>
+          <strong>High-fidelity walkthrough:</strong> Today, Journal, Calendar, Learn, and Profile screens showing the final visual direction.
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="case-section">
     <h2>Key insights</h2>
     <div class="case-grid">
-      <div class="case-block"><h3>Simplicity</h3><p>Users wanted quick logging, fewer menus, and less cognitive load.</p></div>
-      <div class="case-block"><h3>Personalization</h3><p>Users wanted to track mood, pain, energy, sleep, and emotional support, not only period prediction.</p></div>
-      <div class="case-block"><h3>Privacy</h3><p>Users expressed discomfort with ads, data sharing, unclear storage practices, and required logins.</p></div>
-      <div class="case-block"><h3>Trust</h3><p>Clear onboarding, local/restricted data storage, and transparent controls became core product priorities.</p></div>
+      <div class="case-block">
+        <h3>Simplicity</h3>
+        <p>Users wanted quick logging, fewer menus, and less cognitive load.</p>
+      </div>
+
+      <div class="case-block">
+        <h3>Personalization</h3>
+        <p>Users wanted to track mood, pain, energy, sleep, and emotional support, not only period prediction.</p>
+      </div>
+
+      <div class="case-block">
+        <h3>Privacy</h3>
+        <p>Users expressed discomfort with ads, data sharing, unclear storage practices, and required logins.</p>
+      </div>
+
+      <div class="case-block">
+        <h3>Trust</h3>
+        <p>Clear onboarding, local/restricted data storage, and transparent controls became core product priorities.</p>
+      </div>
     </div>
   </section>
 
   <section class="case-section">
     <h2>Design direction</h2>
-    <p>We prioritized anonymous onboarding, a private ID option, flexible symptom journaling, discreet menu labels, a calm visual style, and a simple five-page layout.</p>
+    <p>
+      We prioritized anonymous onboarding, a private ID option, flexible symptom journaling, discreet menu labels,
+      a calm visual style, and a simple five-page layout.
+    </p>
+
     <div class="wireframe-box">Home → Anonymous Onboarding → Quick Log → Symptom Journal → Privacy Settings
                  ↓
         Simple navigation, private ID option, calm interface, clear data controls</div>
@@ -76,14 +277,22 @@
 
   <section class="case-section">
     <h2>Testing & iteration</h2>
-    <p>Testing showed that users liked the simple layout and quick symptom logging, but wanted clearer privacy options and more personalization. We responded by reducing steps, improving privacy settings, and making the interface feel more supportive and calm.</p>
+    <p>
+      Testing showed that users liked the simple layout and quick symptom logging, but wanted clearer privacy options
+      and more personalization. We responded by reducing steps, improving privacy settings, and making the interface
+      feel more supportive and calm.
+    </p>
   </section>
 
   <section class="case-section">
     <h2>Reflection</h2>
-    <p>This project showed me that designing for sensitive information is not just about features. It is about trust, clarity, emotional comfort, and giving users confidence that they control their data.</p>
+    <p>
+      This project showed me that designing for sensitive information is not just about features.
+      It is about trust, clarity, emotional comfort, and giving users confidence that they control their data.
+    </p>
   </section>
 </main>
+
 <footer><p>© 2026 Bryant Morris</p></footer>
 </body>
 </html>
